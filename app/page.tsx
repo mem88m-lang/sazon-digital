@@ -194,24 +194,87 @@ export default function Home() {
       </section>
 
       {/* QUÉ ANALIZAMOS */}
-      <section id="servicios" className="py-16 px-4 md:py-24 md:px-6 bg-slate-50">
-        <div className="max-w-5xl mx-auto">
-          <AnimateIn className="mb-16">
-            <p className="text-xs font-semibold text-[#C9A84C] uppercase tracking-widest mb-3">Metodología</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#0F1C2E] tracking-tight mb-4">Qué analizamos en cada informe</h2>
-            <p className="text-slate-500 text-lg max-w-xl leading-relaxed">Un análisis completo de 18 puntos de su presencia digital.</p>
-          </AnimateIn>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
-            {checklistItems.map((item, i) => (
-              <AnimateIn key={i} delay={i * 30} animation="fadeIn">
-                <div className="flex items-center gap-3 bg-white rounded-xl px-4 py-3.5 border border-slate-100 hover:border-slate-300 transition-colors group">
-                  <svg className="w-3.5 h-3.5 text-[#C9A84C] flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
-                  <span className="text-sm text-slate-600">{item}</span>
+      <section id="servicios" className="py-16 px-4 md:py-24 md:px-6 bg-[#0F1C2E] relative overflow-hidden">
+        {/* Background orbs */}
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-[#C9A84C] opacity-[0.03] blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-blue-500 opacity-[0.03] blur-3xl pointer-events-none" />
+
+        <div className="max-w-6xl mx-auto relative z-10">
+          <div className="grid md:grid-cols-2 gap-16 items-center">
+
+            {/* Left — headline */}
+            <AnimateIn animation="fadeInUp">
+              <p className="text-xs font-semibold text-[#C9A84C] uppercase tracking-widest mb-4">Metodología</p>
+              <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight leading-tight mb-6">
+                Cada análisis cubre<br />
+                <span className="text-[#C9A84C]">18 puntos críticos</span><br />
+                de su negocio.
+              </h2>
+              <p className="text-slate-400 text-lg leading-relaxed mb-8">
+                No dejamos nada al azar. Revisamos cada aspecto de su presencia digital para encontrar exactamente dónde está perdiendo clientes y dinero.
+              </p>
+              <div className="flex items-center gap-4">
+                <div className="text-center">
+                  <div className="text-3xl font-black text-white">18</div>
+                  <div className="text-slate-500 text-xs mt-0.5">puntos</div>
                 </div>
-              </AnimateIn>
-            ))}
+                <div className="w-px h-10 bg-white/10" />
+                <div className="text-center">
+                  <div className="text-3xl font-black text-white">4</div>
+                  <div className="text-slate-500 text-xs mt-0.5">categorías</div>
+                </div>
+                <div className="w-px h-10 bg-white/10" />
+                <div className="text-center">
+                  <div className="text-3xl font-black text-[#C9A84C]">100%</div>
+                  <div className="text-slate-500 text-xs mt-0.5">gratuito</div>
+                </div>
+              </div>
+            </AnimateIn>
+
+            {/* Right — categories */}
+            <div className="space-y-4">
+              {[
+                {
+                  number: '01',
+                  title: 'Reputación Online',
+                  items: ['Google Reviews y calificación', 'Yelp Reviews y presencia', 'Reseñas sin responder', 'Posición vs. competidores'],
+                },
+                {
+                  number: '02',
+                  title: 'Sitio Web y Velocidad',
+                  items: ['Calidad del sitio web', 'Velocidad de carga', 'Optimización móvil', 'Perfil de Google Business'],
+                },
+                {
+                  number: '03',
+                  title: 'Pedidos y Delivery',
+                  items: ['Sistema de pedidos online', 'Dependencia de DoorDash', 'Dependencia de Uber Eats', 'Dependencia de Grubhub'],
+                },
+                {
+                  number: '04',
+                  title: 'Redes y Fidelización',
+                  items: ['Redes sociales activas', 'Frecuencia de publicaciones', 'Programa de fidelización', 'Captura de clientes SMS / Email'],
+                },
+              ].map((cat, i) => (
+                <AnimateIn key={cat.number} delay={i * 100} animation="slideInLeft">
+                  <div className="bg-white/5 border border-white/8 rounded-2xl p-5 hover:border-white/15 transition-colors">
+                    <div className="flex items-start gap-4">
+                      <span className="text-2xl font-black text-[#C9A84C]/30 leading-none mt-0.5 w-8 flex-shrink-0">{cat.number}</span>
+                      <div className="flex-1 min-w-0">
+                        <h3 className="text-white font-semibold mb-2.5">{cat.title}</h3>
+                        <div className="flex flex-wrap gap-2">
+                          {cat.items.map(item => (
+                            <span key={item} className="text-xs text-slate-400 bg-white/5 px-2.5 py-1 rounded-lg">
+                              {item}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </AnimateIn>
+              ))}
+            </div>
+
           </div>
         </div>
       </section>
