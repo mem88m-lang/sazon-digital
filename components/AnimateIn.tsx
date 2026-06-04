@@ -31,7 +31,7 @@ export default function AnimateIn({ children, className = '', delay = 0, animati
           observer.disconnect();
         }
       },
-      { threshold: 0.08 }
+      { threshold: 0.15 }
     );
     observer.observe(el);
     return () => observer.disconnect();
@@ -44,6 +44,7 @@ export default function AnimateIn({ children, className = '', delay = 0, animati
       style={{
         ...initialStyles[animation],
         transition: 'opacity 0.65s cubic-bezier(0.16,1,0.3,1), transform 0.65s cubic-bezier(0.16,1,0.3,1)',
+        willChange: 'opacity, transform',
       }}
     >
       {children}
