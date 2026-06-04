@@ -7,7 +7,6 @@ import AnimatedBar from "@/components/AnimatedBar";
 import LeadForm from "@/components/LeadForm";
 import AnimatedStat from "@/components/AnimatedStat";
 import AnimatedNumber from "@/components/AnimatedNumber";
-import Pricing from "@/components/Pricing";
 
 export async function generateStaticParams() {
   return restaurants.map((r) => ({ slug: r.slug }));
@@ -443,10 +442,6 @@ export default async function AuditPage({ params }: { params: Promise<{ slug: st
           </div>
         </AnimateIn>
 
-        {/* PRICING */}
-        <div className="rounded-2xl overflow-hidden mb-6">
-          <Pricing restaurantName={r.name} />
-        </div>
 
       </div>
     </div>

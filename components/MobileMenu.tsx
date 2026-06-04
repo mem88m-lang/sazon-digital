@@ -47,6 +47,13 @@ export default function MobileMenu() {
           >
             Servicios
           </a>
+          <a
+            href="#precios"
+            onClick={() => setOpen(false)}
+            className="text-sm text-slate-600 hover:text-[#0F1C2E] font-medium px-3 py-3 rounded-lg hover:bg-slate-50 transition-colors"
+          >
+            Precios
+          </a>
           <div className="pt-2 mt-1 border-t border-slate-100">
             <a
               href="https://wa.me/16178628607"
