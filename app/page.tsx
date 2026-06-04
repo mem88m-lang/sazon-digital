@@ -4,6 +4,7 @@ import AnimateIn from "@/components/AnimateIn";
 import StateFilter from "@/components/StateFilter";
 import LeadForm from "@/components/LeadForm";
 import MobileMenu from "@/components/MobileMenu";
+import Pricing from "@/components/Pricing";
 
 // ── Clean SVG icons ──────────────────────────────────────────────────────────
 function IconShoppingCart() {
@@ -98,6 +99,7 @@ export default function Home() {
               <a href="#analisis" className="text-sm text-slate-500 hover:text-[#0F1C2E] transition-colors">Análisis</a>
               <a href="#como-funciona" className="text-sm text-slate-500 hover:text-[#0F1C2E] transition-colors">Cómo Funciona</a>
               <a href="#servicios" className="text-sm text-slate-500 hover:text-[#0F1C2E] transition-colors">Servicios</a>
+              <a href="#precios" className="text-sm text-slate-500 hover:text-[#0F1C2E] transition-colors">Precios</a>
               <a href="https://wa.me/16178628607" className="bg-[#0F1C2E] text-white text-sm px-4 py-2 rounded-lg hover:bg-[#1a2d47] transition-colors font-medium">
                 Solicitar Análisis
               </a>
@@ -258,6 +260,13 @@ export default function Home() {
               </AnimateIn>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* PRICING */}
+      <section id="precios" className="py-16 px-4 md:py-24 md:px-6 bg-white">
+        <div className="max-w-5xl mx-auto">
+          <Pricing />
         </div>
       </section>
 
