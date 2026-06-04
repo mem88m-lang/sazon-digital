@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { restaurants, getScoreLabel } from "@/lib/restaurants";
 import AnimateIn from "@/components/AnimateIn";
+import AnimatedNumber from "@/components/AnimatedNumber";
 import StateFilter from "@/components/StateFilter";
 import LeadForm from "@/components/LeadForm";
 import MobileMenu from "@/components/MobileMenu";
@@ -136,17 +137,30 @@ export default function Home() {
             </a>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-14 pt-10 md:mt-20 md:pt-16 border-t border-white/8">
-            {[
-              { value: restaurants.length.toString(), label: "Restaurantes analizados" },
-              { value: avgScore10 + " / 10", label: "Puntuación promedio" },
-              { value: "68%", label: "Sin sistema de pedidos propio" },
-              { value: "$4,800", label: "Perdido en comisiones / mes" },
-            ].map((stat) => (
-              <div key={stat.label}>
-                <div className="text-3xl md:text-4xl font-bold text-white mb-1.5 tracking-tight">{stat.value}</div>
-                <div className="text-slate-500 text-sm leading-snug">{stat.label}</div>
+            <div>
+              <div className="text-3xl md:text-4xl font-bold text-white mb-1.5 tracking-tight">
+                <AnimatedNumber value={restaurants.length} />
               </div>
-            ))}
+              <div className="text-slate-500 text-sm leading-snug">Restaurantes analizados</div>
+            </div>
+            <div>
+              <div className="text-3xl md:text-4xl font-bold text-white mb-1.5 tracking-tight">
+                {avgScore10} / 10
+              </div>
+              <div className="text-slate-500 text-sm leading-snug">Puntuación promedio</div>
+            </div>
+            <div>
+              <div className="text-3xl md:text-4xl font-bold text-white mb-1.5 tracking-tight">
+                <AnimatedNumber value={68} suffix="%" />
+              </div>
+              <div className="text-slate-500 text-sm leading-snug">Sin sistema de pedidos propio</div>
+            </div>
+            <div>
+              <div className="text-3xl md:text-4xl font-bold text-white mb-1.5 tracking-tight">
+                <AnimatedNumber value={4800} prefix="$" />
+              </div>
+              <div className="text-slate-500 text-sm leading-snug">Perdido en comisiones / mes</div>
+            </div>
           </div>
         </div>
       </section>
@@ -166,7 +180,9 @@ export default function Home() {
                   <div className="w-10 h-10 bg-[#0F1C2E] rounded-xl flex items-center justify-center text-white mb-5">
                     {p.icon}
                   </div>
-                  <div className="text-3xl font-bold text-[#0F1C2E] tracking-tight mb-1">{p.stat}</div>
+                  <div className="text-3xl font-bold text-[#0F1C2E] tracking-tight mb-1">
+                    <AnimatedNumber value={parseInt(p.stat)} suffix="%" />
+                  </div>
                   <div className="text-xs text-slate-400 mb-4">de restaurantes afectados</div>
                   <h3 className="font-semibold text-[#0F1C2E] mb-2">{p.title}</h3>
                   <p className="text-slate-500 text-sm leading-relaxed">{p.description}</p>
@@ -264,10 +280,8 @@ export default function Home() {
       </section>
 
       {/* PRICING */}
-      <section id="precios" className="py-16 px-4 md:py-24 md:px-6 bg-white">
-        <div className="max-w-5xl mx-auto">
-          <Pricing />
-        </div>
+      <section id="precios">
+        <Pricing />
       </section>
 
       {/* CTA FINAL */}

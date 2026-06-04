@@ -444,7 +444,7 @@ export default async function AuditPage({ params }: { params: Promise<{ slug: st
         </AnimateIn>
 
         {/* PRICING */}
-        <div className="bg-slate-50 rounded-2xl px-5 md:px-8 py-2 mb-6 border border-slate-100">
+        <div className="rounded-2xl overflow-hidden mb-6">
           <Pricing restaurantName={r.name} />
         </div>
 
