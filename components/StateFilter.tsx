@@ -3,7 +3,7 @@ import { useState, useMemo } from 'react';
 import Link from 'next/link';
 import { Restaurant, getScoreColor, getScoreBg, getScoreLabel } from '@/lib/restaurants';
 
-const PAGE_SIZE = 12;
+const PAGE_SIZE = 8;
 
 export default function StateFilter({ restaurants }: { restaurants: Restaurant[] }) {
   const [selected, setSelected] = useState('ALL');
