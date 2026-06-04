@@ -3,9 +3,12 @@ import { useState, useMemo } from 'react';
 import Link from 'next/link';
 import { Restaurant, getScoreColor, getScoreBg, getScoreLabel } from '@/lib/restaurants';
 
+const PAGE_SIZE = 12;
+
 export default function StateFilter({ restaurants }: { restaurants: Restaurant[] }) {
   const [selected, setSelected] = useState('ALL');
   const [search, setSearch] = useState('');
+  const [visible, setVisible] = useState(PAGE_SIZE);
 
   const states = useMemo(() => {
     const counts: Record<string, number> = {};
@@ -14,12 +17,16 @@ export default function StateFilter({ restaurants }: { restaurants: Restaurant[]
   }, [restaurants]);
 
   const filtered = useMemo(() => {
+    setVisible(PAGE_SIZE); // reset on filter/search change
     return restaurants.filter(r => {
       const matchState = selected === 'ALL' || r.state === selected;
       const matchSearch = !search || r.name.toLowerCase().includes(search.toLowerCase()) || r.city.toLowerCase().includes(search.toLowerCase());
       return matchState && matchSearch;
     });
   }, [restaurants, selected, search]);
+
+  const shown = filtered.slice(0, visible);
+  const hasMore = visible < filtered.length;
 
   return (
     <div>
@@ -65,7 +72,7 @@ export default function StateFilter({ restaurants }: { restaurants: Restaurant[]
 
       {/* Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-        {filtered.map((r) => {
+        {shown.map((r) => {
           const s10 = (r.score / 10).toFixed(1);
           const g10 = (r.googleScore / 10).toFixed(1);
           const w10 = (r.webScore / 10).toFixed(1);
@@ -116,6 +123,24 @@ export default function StateFilter({ restaurants }: { restaurants: Restaurant[]
           );
         })}
       </div>
+
+      {/* Load more */}
+      {hasMore && (
+        <div className="text-center mt-10">
+          <p className="text-slate-400 text-xs mb-4">
+            Mostrando {shown.length} de {filtered.length} restaurantes
+          </p>
+          <button
+            onClick={() => setVisible(v => v + PAGE_SIZE)}
+            className="inline-flex items-center gap-2 bg-[#0F1C2E] text-white text-sm font-semibold px-8 py-3.5 rounded-xl hover:bg-[#1a2d47] transition-all hover:scale-[1.02]"
+          >
+            Ver más restaurantes
+            <svg fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" className="w-4 h-4">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+        </div>
+      )}
 
       {filtered.length === 0 && (
         <div className="text-center py-24">
