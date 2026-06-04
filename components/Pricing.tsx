@@ -66,7 +66,8 @@ export default function Pricing({ restaurantName }: { restaurantName?: string })
       <div className="absolute -top-32 -left-32 w-[500px] h-[500px] rounded-full bg-[#C9A84C] opacity-[0.04] blur-3xl pointer-events-none" />
       <div className="absolute -bottom-32 -right-32 w-[500px] h-[500px] rounded-full bg-blue-500 opacity-[0.04] blur-3xl pointer-events-none" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 py-16 md:py-24">
+      <div className="relative z-10 w-full py-16 md:py-24">
+        <div className="max-w-7xl mx-auto px-4 md:px-6">
 
         {/* Header */}
         <div className="text-center mb-16">
@@ -255,6 +256,7 @@ export default function Pricing({ restaurantName }: { restaurantName?: string })
           <a href="https://wa.me/16178628607" className="text-[#C9A84C] hover:underline">respondemos en menos de 5 minutos</a>.
         </p>
 
+        </div>{/* end max-w-7xl */}
       </div>
     </div>
   );
