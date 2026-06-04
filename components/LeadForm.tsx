@@ -51,7 +51,7 @@ export default function LeadForm({
 
         {/* Email */}
         <a
-          href={`mailto:mem88m@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`}
+          href={`mailto:marcosazondigital@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`}
           className="flex items-center justify-center gap-2.5 bg-[#0F1C2E] hover:bg-[#1a2d47] text-white font-semibold py-3.5 px-4 rounded-xl transition-all hover:scale-[1.02] border border-white/10 text-sm"
         >
           <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
